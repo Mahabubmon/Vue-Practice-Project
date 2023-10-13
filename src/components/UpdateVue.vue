@@ -17,6 +17,45 @@
     import axios from "axios"
     export default{
         name:"UpdateVue",
+        data()
+        {
+            return {
+                resturent:{
+                    name:'',
+                    address:'',
+                    contect:''
+                }
+            }
+        },
+        components:{
+            HeaderVue
+        },
+        methods:
+        {
+            async updateResturent(){
+                const result = await axios.put(" http://localhost:3000/resturent/"+this.$route.params.id,{
+                    name:this.resturent.name,
+                    address:this.resturent.address,
+                    contect:this.resturent.contect,
+                });
+                if(result.status==200)
+                {
+                    this.$router.push({name:'HomeVue'});
+                }
+            }
+        },
+        async mounted()
+        {
+            let user = localStorage.getItem('user-info');
+            if(!user)
+            {
+                this.$router.push({name:'SignUp'});
+            }
+            const result = await axios.get(" http://localhost:3000/resturent/"+this.$route.params.id);
+            // console.warn(this.$route.params.id)
+            
+            this.resturent = result.data
+        }
         
     }
     </script>
