@@ -18,5 +18,41 @@
         components:{
             HeaderVue
         },
+        ,
+        data()
+        {
+            return {
+                resturent:{
+                    name:'',
+                    address:'',
+                    contect:''
+                }
+            }
+        },
+        methods:{
+           async addresturent()
+           {
+                console.warn(this.resturent);
+                const result = await axios.post(" http://localhost:3000/resturent",{
+                    name:this.resturent.name,
+                    address:this.resturent.address,
+                    contect:this.resturent.contect,
+                });
+                if(result.status==201)
+                {
+                    this.$router.push({name:'HomeVue'});
+                }
+                console.warn("result",result)
+            }
+
+        },
+        mounted()
+        {
+            let user = localStorage.getItem('user-info');
+            if(!user)
+            {
+                this.$router.push({name:'SignUp'});
+            }
+        }
          }
     </script>
