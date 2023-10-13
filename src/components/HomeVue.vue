@@ -66,7 +66,10 @@
     </script>
     
     <style>
-   
-    
-    
-    </style>
+tdd{
+    width: 350px;
+    height: 120px;
+}
+
+
+</style>
