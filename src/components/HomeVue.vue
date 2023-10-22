@@ -1,7 +1,5 @@
 <template>
     <HeaderVue /> 
-
-    <AddMenu />
     <table border="1">
     <tr>
     <td>ID</td>
@@ -20,7 +18,7 @@
     <button v-on:click="deleteResturent(item.id)">Delete</button>
     </tr>
 </table>
-
+<AddMenu />
        
     </template>
     
