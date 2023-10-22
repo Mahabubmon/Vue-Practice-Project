@@ -35,20 +35,32 @@
       "name": "",
       "password": "",
       "id": 7
+    },
+    {
+      "email": "arif@test.com",
+      "name": "Arif",
+      "password": "123456789",
+      "id": 8
+    },
+    {
+      "email": "arif@test.com",
+      "name": "Arif",
+      "password": "123456789",
+      "id": 9
     }
   ],
   "resturent": [
     {
-      "id": 1,
-      "name": "MFC",
+      "name": "MFCasad",
       "address": "Lalbag,Dhaka",
-      "contect": 1211
+      "contect": 1211,
+      "id": 1
     },
     {
-      "name": "Mosarof",
-      "address": "lalbag, opposite of hridoy",
-      "contect": "789456",
-      "id": 4
+      "name": "Mehedi ",
+      "address": "mehedi@test.com",
+      "contect": "mohammodpur",
+      "id": 2
     }
   ]
 }

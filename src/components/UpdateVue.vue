@@ -28,7 +28,7 @@
             }
         },
         components:{
-            HeaderVue
+            HeaderVue 
         },
         methods:
         {

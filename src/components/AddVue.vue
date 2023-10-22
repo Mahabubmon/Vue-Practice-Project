@@ -18,7 +18,7 @@
         components:{
             HeaderVue
         },
-        ,
+        
         data()
         {
             return {
