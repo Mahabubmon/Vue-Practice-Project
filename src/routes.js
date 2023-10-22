@@ -34,7 +34,7 @@ const routes = [
     {
         name:'AddMenu',
         component:AddMenu,
-        path:'/addMenu/:id'
+        path:'/addMenu'
     },
 ]
 

@@ -1,5 +1,7 @@
 <template>
     <HeaderVue /> 
+
+    <AddMenu />
     <table border="1">
     <tr>
     <td>ID</td>
@@ -25,6 +27,7 @@
     <script>
     import axios from 'axios';
     import HeaderVue from './HeaderVue.vue';
+    import AddMenu from './AddMenu.vue';
     export default{
         name:"HomeVue", 
         data()
@@ -35,7 +38,7 @@
         }
     },
     components:{
-        HeaderVue
+        HeaderVue, AddMenu
     },
     methods:{
         async deleteResturent(id){
