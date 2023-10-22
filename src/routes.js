@@ -4,6 +4,7 @@ import {createRouter,createWebHistory} from 'vue-router'
 import LoginVue from "./components/LoginVue.vue"
 import AddVue from "./components/AddVue.vue"
 import UpdateVue from "./components/UpdateVue.vue"
+import AddMenu from "./components/AddMenu.vue"
 const routes = [
     {
         name:'HomeVue',
@@ -29,6 +30,11 @@ const routes = [
         name:'UpdateVue',
         component:UpdateVue,
         path:'/update/:id'
+    },
+    {
+        name:'AddMenu',
+        component:AddMenu,
+        path:'/addMenu/:id'
     },
 ]
 
