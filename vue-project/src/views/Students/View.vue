@@ -34,6 +34,7 @@
 
 
 <script>
+import axios from 'axios';
 export default {
     name: 'student',
     data() {
@@ -43,7 +44,14 @@ export default {
         }
     },
     mounted() {
-        console.log('I am here');
+        // console.log('I am here');
+    },
+    methods: {
+        getStudents() {
+            axios.get('').then(res => {
+                
+            })
+        }
     }
 }
 
