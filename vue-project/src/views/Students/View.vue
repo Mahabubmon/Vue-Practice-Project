@@ -22,7 +22,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="(student, index) in this.student" :key="index">
+                    <td>{{student.id}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.course}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.phone}}</td>
+                    <td>{{student.created_at }}</td>
+                    <td>
+                        <RouterLink to="/"  class="btn btn-primary float-end" >
+                            Add Student
+                        </RouterLink>
+                        <button>Delete</button>
+                    </td>
 
                 </tr>
             </tbody>
@@ -35,29 +47,27 @@
 
 <script>
 import axios from 'axios';
+import { RouterLink } from 'vue-router';
 export default {
     name: 'student',
     data() {
         return {
-            student:[]
-            
-        }
+            student: []
+        };
     },
     mounted() {
-
-    
-       this.getStudents();
+        this.getStudents();
         // console.log('I am here');
     },
     methods: {
-
         getStudents() {
             axios.get('http://localhost:8000/api/students').then(res => {
-                console.log(res);
-
+                this.student = res.data.student;
+                // console.log(this.student);
             });
         }
-    }
+    },
+    components: { RouterLink }
 }
 
 
