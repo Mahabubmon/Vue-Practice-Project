@@ -1,4 +1,5 @@
 <template>
+<div class="container">
    <div class="card">
     <div class="card-header">
         <h4>
@@ -21,7 +22,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody v-if="this.student.length > 0">
                 <tr v-for="(student, index) in this.student" :key="index">
                     <td>{{student.id}}</td>
                     <td>{{student.name}}</td>
@@ -30,18 +31,25 @@
                     <td>{{student.phone}}</td>
                     <td>{{student.created_at }}</td>
                     <td>
-                        <RouterLink to="/"  class="btn btn-primary float-end" >
-                            Add Student
+                        <RouterLink to="/"  class="btn btn-primary " >
+                            Edit
                         </RouterLink>
-                        <button>Delete</button>
+                        <button type="button" class="btn btn-danger ">Delete</button>
                     </td>
 
+                </tr>
+            </tbody>
+
+            <tbody v-else>
+                <tr>
+                    <td colspan="7"> Loading...</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-   </div>
+    </div>
+    </div>
 </template>
 
 
