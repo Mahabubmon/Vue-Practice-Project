@@ -44,13 +44,18 @@ export default {
         }
     },
     mounted() {
+
+    
+       this.getStudents();
         // console.log('I am here');
     },
     methods: {
+
         getStudents() {
-            axios.get('').then(res => {
-                
-            })
+            axios.get('http://localhost:8000/api/students').then(res => {
+                console.log(res);
+
+            });
         }
     }
 }
