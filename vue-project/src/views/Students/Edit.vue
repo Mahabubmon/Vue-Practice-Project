@@ -2,7 +2,7 @@
     <div class="container mt-5">
         <div class="card">
             <div class="card-hearder">
-                <h4>Add Students</h4>
+                <h4>Edit Students</h4>
             </div>
             <div class="card-body">
 
@@ -40,7 +40,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: 'studentCreate',
+    name: 'studentEdit',
     data() {
         return {
             errorList:'',
@@ -54,7 +54,22 @@ export default {
             }
         }
     },
+    mounted() {
+
+        // console.log(this.$route.params.id);
+        this.getStudentData(this.$route.params.id);
+    },
     methods: {
+        getStudentData(studentId) {
+
+            axios.get(`http://localhost:8000/api/students/${studentId}/edit`)
+                .then(res => {
+
+                    console.log(res.data.student);
+
+                    this.model.student.name = res.data.student.name
+            });
+        },
         saveStudent() {
 
             var $mythis = this;
