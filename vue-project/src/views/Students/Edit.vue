@@ -30,7 +30,7 @@
                     <input type="text" v-model="model.student.phone" class="form-control"/>
                 </div>
                 <div class="mb-3">
-                    <button type="button" @click="saveStudent" class="btn btn-primary">Save</button>
+                    <button type="button" @click="updateStudent" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>
@@ -43,7 +43,8 @@ export default {
     name: 'studentEdit',
     data() {
         return {
-            errorList:'',
+            errorList: '',
+            studentId,
             model: {
                 student: {
                     name: '',
@@ -60,6 +61,8 @@ export default {
         this.getStudentData(this.$route.params.id);
     },
     methods: {
+
+
         getStudentData(studentId) {
 
             axios.get(`http://localhost:8000/api/students/${studentId}/edit`)
@@ -68,30 +71,44 @@ export default {
                     console.log(res.data.students);
                     this.model.student = res.data.students
                     
-            });
-        },
-        saveStudent() {
+                }).catch(function (error) {
+                    if (error.response) {
+                        if (error.response.status == 404) {
 
-            var $mythis = this;
-            axios.post('http://localhost:8000/api/students', this.model.student)
+                            // $mythis.errorList = error.response.data.errors;
+                            alert(error.response.data.message);
+
+
+                        }
+
+                    }
+                });
+        },
+     
+        updateStudent(studentId) {
+
+            var mythis = this;
+            axios.put(`http://localhost:8000/api/students/${studentId}/edit`, this.model.student)
                 .then(res => {
                     console.log(res.data)
                     alert(res.data.message);
-                    this.student = {
-                        name: '',
-                        course: '',
-                        email: '',
-                        phone: ''
-                    }
 
+                    this.errorList = '';
                 })
                 .catch(function (error) {
                     if (error.response) {
                         if (error.response.status == 422) {
 
-                             $mythis.errorList = error.response.data.errors;
+                            mythis.errorList = error.response.data.errors;
                                 
-                            }
+                        }
+                        if (error.response.status == 404) {
+
+                            alert(error.response.data.message);
+
+
+
+                        }
                             
                             // console.log(error.response.data);
                             // console.log(error.response.status);

@@ -57,7 +57,7 @@ export default {
     methods: {
         saveStudent() {
 
-            var $mythis = this;
+            var mythis = this;
             axios.post('http://localhost:8000/api/students', this.model.student)
                 .then(res => {
                     console.log(res.data)
@@ -68,13 +68,15 @@ export default {
                         email: '',
                         phone: ''
                     }
+                    this.errorList = '';
+
 
                 })
                 .catch(function (error) {
                     if (error.response) {
                         if (error.response.status == 422) {
 
-                             $mythis.errorList = error.response.data.errors;
+                             mythis.errorList = error.response.data.errors;
                                 
                             }
                             
