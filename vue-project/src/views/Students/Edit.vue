@@ -65,9 +65,9 @@ export default {
             axios.get(`http://localhost:8000/api/students/${studentId}/edit`)
                 .then(res => {
 
-                    console.log(res.data.student);
-
-                    this.model.student.name = res.data.student.name
+                    console.log(res.data.students);
+                    this.model.student = res.data.students
+                    
             });
         },
         saveStudent() {
