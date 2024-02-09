@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: 'studentCreate',
     data() {
@@ -73,7 +74,7 @@ export default {
                     if (error.response) {
                         if (error.response.status == 422) {
 
-                            mythis.errorList = error.response.data.errors;
+                             $mythis.errorList = error.response.data.errors;
                                 
                             }
                             
