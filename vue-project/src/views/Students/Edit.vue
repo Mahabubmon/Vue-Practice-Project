@@ -44,7 +44,7 @@ export default {
     data() {
         return {
             errorList: '',
-            studentId,
+            studentId:'',
             model: {
                 student: {
                     name: '',
@@ -58,6 +58,7 @@ export default {
     mounted() {
 
         // console.log(this.$route.params.id);
+        this.studentId = this.$route.params.id;
         this.getStudentData(this.$route.params.id);
     },
     methods: {
@@ -85,10 +86,10 @@ export default {
                 });
         },
      
-        updateStudent(studentId) {
+        updateStudent() {
 
             var mythis = this;
-            axios.put(`http://localhost:8000/api/students/${studentId}/edit`, this.model.student)
+            axios.put(`http://localhost:8000/api/students/${this.studentId}/edit`, this.model.student)
                 .then(res => {
                     console.log(res.data)
                     alert(res.data.message);
