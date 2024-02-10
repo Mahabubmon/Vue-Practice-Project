@@ -34,7 +34,7 @@
                         <RouterLink :to="{ path: '/students/'+ student.id +'/edit' }" class="btn btn-primary " >
                             Edit
                         </RouterLink>
-                        <button type="button" class="btn btn-danger ">Delete</button>
+                        <button type="button" @click="deleteStudent(student.id)" class="btn btn-danger ">Delete</button>
                     </td>
 
                 </tr>
@@ -73,6 +73,20 @@ export default {
                 this.student = res.data.student;
                 // console.log(this.student);
             });
+        },
+        deleteStudent(studentId){
+
+            if (confirm('Are you sure want to delete this function')) {
+                // console.log(studentId);
+                axios.delete(`http://localhost:8000/api/students/${studentId}/delete`).then(res => {
+
+                    alert(res.data.message);
+                    this.getStudents();
+
+
+                });
+                
+            }
         }
     },
     components: { RouterLink }
