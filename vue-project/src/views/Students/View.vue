@@ -84,7 +84,17 @@ export default {
                     this.getStudents();
 
 
-                });
+                }).catch(function (error) {
+                    if (error.response) {
+                        if (error.response.status == 404) {
+
+                            alert(error.response.data.message);
+
+
+                        }
+
+                    }
+                });;
                 
             }
         }
